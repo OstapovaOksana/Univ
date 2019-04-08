@@ -1,0 +1,42 @@
+﻿@model Moto_ShowsCore.Models.MotoShows
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Видалення автосалону</h1>
+
+<h3>Ви впевнені у видаленні?</h3>
+<h4>Інформація зв'язана з цим автосалоном буде видалена в інших таблицях!</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            Назва автосалону
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Address)*@
+            Адреса
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Directors)*@
+            Власник
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Directors.Name)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

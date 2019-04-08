@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Moto_ShowsCore.Models.MotoShows>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Автосалони</h1>
+
+<p>
+    <a asp-action="Create">Додати новий автосалон</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Пошук за назвою: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Пошук" class="btn btn-primary" /> |
+            <a asp-action="Index">Повернутися до повного списку</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                Назва автосалону
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Address)*@
+                Адреса
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Directors)*@
+                Власник
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Directors.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Редагувати</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

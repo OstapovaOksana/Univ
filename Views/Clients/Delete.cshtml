@@ -1,0 +1,41 @@
+﻿@model Moto_ShowsCore.Models.Clients
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Видалити клієнта</h1>
+
+<h3>Ви впевнені у видаленні?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Name)*@
+            ПІБ
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Telephone)*@
+            Номер телефону
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Telephone)
+        </dd>
+        <dt class = "col-sm-2">
+            @*@Html.DisplayNameFor(model => model.Cars)*@
+            Автомобілі
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Cars.Brand)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index">Назад</a>
+    </form>
+</div>

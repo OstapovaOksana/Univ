@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Moto_ShowsCore.Models.Cars>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Автомобілі</h1>
+
+<p>
+    <a asp-action="Create">Додати новий автомобіль</a>
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Пошук за моделю: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Пошук" class="btn btn-primary" /> |
+            <a asp-action="Index">Повернутися до повного списку</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Brand)*@
+                Модель
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Year)*@
+                Рік випуску
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Cost)*@
+                Ціна
+            </th>
+            <th>
+                @*@Html.DisplayNameFor(model => model.MotoShows)*@
+                Автосалони
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Year)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MotoShows.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ID">Редагувати</a> |
+                <a asp-action="Delete" asp-route-id="@item.ID">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
